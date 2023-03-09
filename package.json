@@ -16,7 +16,13 @@
     "url": "https://github.com/amamajcher/semestr3/issues"
   },
   "homepage": "https://github.com/amamajcher/semestr3#readme",
+  "browserslist": [
+    "defaults"
+  ],
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.58.3"
   }
 }
