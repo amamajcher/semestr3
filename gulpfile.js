@@ -3,6 +3,7 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
 const fileInclude = require('gulp-file-include');
+const htmlminify = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
 
 const path = {
@@ -39,12 +40,14 @@ const photoCompression = function(){
         .pipe(gulp.dest(path.imageDist))
 };
 
+
 const html = function(){
     return gulp.src(path.htmlSrc)
         .pipe(fileInclude({
             prefix: '@@',
             basepath: '@file'
         }))
+        .pipe(htmlminify({collapseWhitespace: true}))
         .pipe(gulp.dest(path.root))
 };
 
