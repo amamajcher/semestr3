@@ -5,11 +5,16 @@ const imagemin = require('gulp-imagemin');
 const fileInclude = require('gulp-file-include');
 const htmlminify = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
+const webpack = require('webpack-stream');
+const webpackConfig = require('./webpack.config');
 
 const path = {
     root: "./dist/",
     cssSrc: "./src/scss/**/*.scss",
     cssDist: "./dist/css",
+    jsSrc: "./src/js/app.js",
+    jsSrcAll: "./src/js/**/*.js",
+    jsDist: "./dist/js/",
     imageSrc: "./src/images/**/*",
     imageDist: "./dist/images",
     htmlSrc: "./src/html/index.html"
@@ -65,13 +70,21 @@ const serverReload = function(cb){
     cb();
 }
 
+const javascript = function() {
+    return gulp.src(path.jsSrc)
+        .pipe(webpack(webpackConfig))
+        .pipe(gulp.dest(path.jsDist))
+};
+
+
 const watch = function(){
     gulp.watch(path.cssSrc, gulp.series(css, serverReload));
+    gulp.watch(path.jsSrcAll, gulp.series(javascript, serverReload));
     gulp.watch(path.htmlSrc, gulp.series(html, serverReload));
 };
 
 
 
-exports.default = gulp.series(html, css, server, watch);
+exports.default = gulp.series(html, css, javascript, server, watch);
 exports.production = gulp.series(photoCompression, html, css);
 
