@@ -7,6 +7,7 @@ const htmlminify = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 const webpackConfig = require('./webpack.config');
+const clean = require('gulp-clean');
 
 const path = {
     root: "./dist/",
@@ -76,6 +77,10 @@ const javascript = function() {
         .pipe(gulp.dest(path.jsDist))
 };
 
+const cleaner = function(){
+    return gulp.src(path.root)
+        .pipe(clean());
+};
 
 const watch = function(){
     gulp.watch(path.cssSrc, gulp.series(css, serverReload));
@@ -85,6 +90,6 @@ const watch = function(){
 
 
 
-exports.default = gulp.series(html, css, javascript, server, watch);
+exports.default = gulp.series(cleaner, html, css, javascript, server, watch);
 exports.production = gulp.series(photoCompression, html, css);
 
