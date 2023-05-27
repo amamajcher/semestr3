@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gulp</title>
-    <link href="../css/main.css" rel="stylesheet">
-</head>
-<body>
-    @@include("./page_header/index.html")
-    <main>
-        <section>
-            <article>
-                <h2>Wpis 1</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, obcaecati, facilis dolorum est eaque illo pariatur quod illum quibusdam eveniet natus magni quos! Optio provident ut repudiandae, numquam atque suscipit expedita cumque incidunt, est esse consequatur quae fugit sed eligendi. Voluptate labore voluptates accusantium velit iure facilis quia ducimus nisi ea nostrum, tenetur autem culpa incidunt quam ipsa impedit officia nemo, dolores aperiam! Obcaecati asperiores iure vitae, labore voluptate optio quidem natus? Omnis, nisi. Laudantium aspernatur soluta voluptatibus libero odit perspiciatis, consequuntur, qui doloribus blanditiis iusto accusamus vel. Eaque nesciunt dolorem eveniet distinctio cumque libero explicabo quam commodi repellendus molestias.</p>
-            </article>
-        </section>
-    </main>
-    <script src="../js/app.js"></script>
-</body>
+    <html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gulp</title>
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+
+    <body>
+        @@include("./page-header/index.html")
+
+        <main>
+            <div class="modal" id="modal-welcome">
+                <h2>Welcome</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque facere nulla rem mollitia expedita eum voluptate quod asperiores quasi animi consequuntur, repellendus eaque pariatur laborum, nemo sed? Quam, voluptatem beatae.</p>
+                <button>Close</button>
+            </div>
+        </main>
+
+        <script src="../js/app.js"></script>
+    </body>
 </html>
