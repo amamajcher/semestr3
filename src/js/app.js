@@ -40,8 +40,13 @@ const modalInfo = localStorage.getItem("Modal");
 const element = document.getElementById("modal-welcome");
 
 if(modalInfo){
-    element.classList.add("displaynone");
-}else{
+    element.classList.add("hide");
+}else{ 
     const welcomeModal = new Modal('modal-welcome', { onCloseShowInfo: true });
-    welcomeModal.init();
+    element.classList.add("hide");
+    setTimeout(() => {
+        welcomeModal.init();
+        element.classList.remove("hide");
+        element.classList.add("show");
+    }, 2000);
 }

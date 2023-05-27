@@ -42,6 +42,9 @@ body.overlay::before {
   background-color: red;
   max-width: 600px;
   padding: 50px;
+}
+
+.show {
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -49,10 +52,6 @@ body.overlay::before {
           animation-name: modal-in;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
-}
-
-.displaynone {
-  display: none;
 }
 
 .hide {
