@@ -36,14 +36,12 @@
 
 import { Modal } from "./components/modal";
 
-const welcomeModal = new Modal('modal-welcome', { onCloseShowInfo: true });
-welcomeModal.init();
+const modalInfo = localStorage.getItem("Modal");
+const element = document.getElementById("modal-welcome");
 
-// document.cookie = "user=Marcin; max-age=3600;";
-// console.log(document.cookie);
-
-localStorage.setItem("user", "Marcin");
-sessionStorage.setItem("user", "Marcin2");
-
-console.log(localStorage.getItem("user"));
-console.log(sessionStorage.getItem("user"));
+if(modalInfo){
+    element.classList.add("displaynone");
+}else{
+    const welcomeModal = new Modal('modal-welcome', { onCloseShowInfo: true });
+    welcomeModal.init();
+}

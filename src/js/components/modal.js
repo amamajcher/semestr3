@@ -14,10 +14,11 @@ export class Modal {
     handleCloseButton() {
         this.closeButton.addEventListener('click', () => {
             if(this.options.onCloseShowInfo) {
-                alert('CLOSE!')
-            } else {
                 this.modal.classList.add(this.hideClassName);
                 this.$bodyElement.classList.remove(this.bodyOverlayClassName);
+                localStorage.setItem("Modal", "Zaakcpetowany");
+            } else {
+                alert("COLES");
             }
         })
 

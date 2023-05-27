@@ -51,6 +51,10 @@ body.overlay::before {
           animation-duration: 1s;
 }
 
+.displaynone {
+  display: none;
+}
+
 .hide {
   display: none;
 }
