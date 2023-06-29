@@ -1,0 +1,2 @@
+!function(){"use strict";var e,o={360:function(e,o){Object.defineProperty(o,"__esModule",{value:!0}),o.userAge=o.name=void 0,o.userAge=30,o.name="janekdzbanek"}},n={};e=function e(r){var t=n[r];if(void 0!==t)return t.exports;var a=n[r]={exports:{}};return o[r](a,a.exports,e),a.exports}(360),console.log("Hello",6669),console.log("Halko ".concat(e.name,", pewnie masz ").concat(e.userAge," lat"))}();
+//# sourceMappingURL=app.js.map
