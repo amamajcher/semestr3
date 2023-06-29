@@ -2,12 +2,28 @@
   "name": "zajecia-2",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "index.js",
+<<<<<<< HEAD
+=======
+  "type": "commonjs",
+=======
+  "main": "app.js",
+>>>>>>> main
+>>>>>>> main
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
+=======
+  "bugs": {
+    "url": "https://github.com/amamajcher/semestr3/issues"
+  },
+  "homepage": "https://github.com/amamajcher/semestr3#readme",
+<<<<<<< HEAD
+>>>>>>> main
   "browserslist": [
     "last 5 version"
   ],
@@ -23,7 +39,15 @@
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.0.0",
     "gulp-sass": "^5.1.0",
+<<<<<<< HEAD
     "sass": "^1.58.3",
     "webpack-stream": "^7.0.0"
+=======
+    "sass": "^1.58.3"
+=======
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+>>>>>>> main
+>>>>>>> main
   }
 }
