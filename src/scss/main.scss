@@ -36,15 +36,12 @@ body {
    background-color: red;
    max-width: 600px;
    padding: 50px;
-   transform: translate(-50%, -50%);
+}
+.show{
+    transform: translate(-50%, -50%);
    animation-name: modal-in;
    animation-duration: 1s;
 }
-
-.displaynone{
-    display: none;
-}
-
 .hide {
     display: none;
 }
