@@ -27,3 +27,4 @@ class Car extends Vehicle {
 
 const myCar = new Car("car", "Ford");
 myCar.showInfo();
+console.log("siema");

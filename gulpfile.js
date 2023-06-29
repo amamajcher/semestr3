@@ -90,6 +90,6 @@ const watch = function(){
 
 
 
-exports.default = gulp.series(cleaner, html, css, javascript, server, watch);
+exports.default = gulp.series(html, css, javascript, server, watch);
 exports.production = gulp.series(photoCompression, html, css);
 
