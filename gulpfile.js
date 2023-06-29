@@ -3,70 +3,69 @@ const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
 const fileInclude = require('gulp-file-include');
-const htmlminify = require('gulp-htmlmin');
+const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 const webpackConfig = require('./webpack.config');
-const clean = require('gulp-clean');
 
 const path = {
     root: "./dist/",
     cssSrc: "./src/scss/**/*.scss",
-    cssDist: "./dist/css",
+    cssDist: "./dist/css/",
     jsSrc: "./src/js/app.js",
     jsSrcAll: "./src/js/**/*.js",
     jsDist: "./dist/js/",
     imageSrc: "./src/images/**/*",
-    imageDist: "./dist/images",
+    imageDist: "./dist/images/",
     htmlSrc: "./src/html/index.html"
 };
 
-const css = function(){
+const css = function() {
     return gulp.src(path.cssSrc)
-        .pipe(sass(
-            {outputStyle: "compressed"}
-        ).on("error", sass.logError))
+        .pipe(sass().on("error", sass.logError))
         .pipe(autoprefixer())
         .pipe(gulp.dest(path.cssDist))
 };
 
-const photoCompression = function(){
+const cssProduction = function() {
+    return gulp.src(path.cssSrc)
+        .pipe(sass({outputStyle: 'compressed'}).on("error", sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest(path.cssDist))
+};
+
+const imageMin = function() {
     return gulp.src(path.imageSrc)
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-	        imagemin.mozjpeg({quality: 75, progressive: true}),
-	        imagemin.optipng({optimizationLevel: 5}),
-	        imagemin.svgo({
-                plugins: [
-                    {removeViewBox: true},
-                    {cleanupIDs: false}
-                ]
-	        })
-        ]))
+        .pipe(imagemin())
         .pipe(gulp.dest(path.imageDist))
 };
 
-
-const html = function(){
+const html = function() {
     return gulp.src(path.htmlSrc)
         .pipe(fileInclude({
-            prefix: '@@',
-            basepath: '@file'
+            prefix: "@@",
+            basepath: "@file"
         }))
-        .pipe(htmlminify({collapseWhitespace: true}))
         .pipe(gulp.dest(path.root))
-};
+}
 
-const server = function(cb){
+const htmlMinify = function() {
+    return gulp.src(path.htmlSrc)
+      .pipe(htmlmin({ collapseWhitespace: true }))
+      .pipe(gulp.dest(path.root));
+}
+
+const server = function(cb) { 
     browserSync.init({
         server: {
             baseDir: path.root
-        }
-    })
+        } 
+    });
+
     cb();
 }
 
-const serverReload = function(cb){
+const serverReload = function(cb) { 
     browserSync.reload();
     cb();
 }
@@ -77,19 +76,13 @@ const javascript = function() {
         .pipe(gulp.dest(path.jsDist))
 };
 
-const cleaner = function(){
-    return gulp.src(path.root)
-        .pipe(clean());
-};
-
-const watch = function(){
+const watch = function() {
     gulp.watch(path.cssSrc, gulp.series(css, serverReload));
     gulp.watch(path.jsSrcAll, gulp.series(javascript, serverReload));
     gulp.watch(path.htmlSrc, gulp.series(html, serverReload));
-};
+}
 
+// DODAĆ TASK O NAZWIE NP "CLEAR" KTORY BEDZIE CZYSCIC CALA ZAWARTOSC FOLDERU /DIST, I ODPALAC TO NA POCZATKU TASKU DEFAULT
 
-
-exports.default = gulp.series(cleaner, html, css, javascript, server, watch);
-exports.production = gulp.series(photoCompression, html, css);
-
+exports.default = gulp.series( html, css, javascript, server, watch );
+// exports.production = gulp.series( imageMin, html, htmlMinify, cssProduction );
