@@ -47,6 +47,7 @@ buttonSearch.addEventListener('click', (e) => {
 buttonClear.addEventListener('click', (e) => {
     reposGit.classList.add("none");
     reposGit.classList.remove("block");
+    search.value = " ";
 });
 
 search.value = localStorage.getItem('name');
@@ -65,7 +66,7 @@ if(username.length > 0){
         console.log(err);
     });
 
-    fetch('https://api.github.com/users/amadeuszmajcher')
+    fetch('https://api.github.com/users/'+username+'')
     .then(resp => resp.json())
     .then(resp => {
         const user = resp;
